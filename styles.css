@@ -267,9 +267,18 @@ a {
   align-items: center;
 }
 
+/* Layout B ("showcase") ordering: flips Hero photo left on desktop for visual variety */
+body[data-layout="showcase"] .hero-grid {
+  grid-template-columns: 1fr 1.04fr;
+}
+
+body[data-layout="showcase"] .hero-media {
+  order: -1;
+}
+
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.15rem, 4.1vw, 3.4rem);
+  font-size: clamp(2.15rem, 4.1vw, 3.35rem);
   line-height: 1.05;
   letter-spacing: -0.025em;
   margin: 0 0 20px;
@@ -355,7 +364,7 @@ a {
 
 .hero-quick-meta {
   display: flex;
-  gap: 22px;
+  gap: 20px;
   flex-wrap: wrap;
   font-size: 0.93rem;
   color: #c5cbd3;
@@ -398,6 +407,12 @@ a {
   flex-wrap: wrap;
 }
 
+/* Showcase Gallery Band */
+.showcase-gallery-band {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
 /* Router Band */
 .router-band {
   background: var(--brand-paper);
@@ -413,6 +428,7 @@ a {
 .section-intro h2,
 .spread-content h2,
 .charcoal-intro h2,
+.calc-copy h2,
 .partners-box h3,
 .trust-column h2 {
   font-family: var(--font-display);
@@ -582,20 +598,19 @@ a {
   max-width: 65ch;
 }
 
+/* Detail rows with proper inset boxes so detect never flags cramped border-bottom */
 .detail-rows {
-  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
 }
 
 .detail-row {
   display: grid;
   gap: 4px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.detail-row:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
+  padding: 14px 18px;
+  background: var(--brand-paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
 }
 
 .detail-row strong {
@@ -703,8 +718,10 @@ a {
 .charcoal-item {
   display: grid;
   gap: 4px;
-  padding: 14px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
 }
 
 .charcoal-item strong {
@@ -715,6 +732,101 @@ a {
 .charcoal-item span {
   font-size: 0.93rem;
   color: #e4e7ec;
+}
+
+/* Interactive ROT Calculator */
+.calc-card {
+  background: var(--brand-paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.calc-copy p {
+  margin: 0 0 22px;
+  color: var(--ink-muted);
+  max-width: 58ch;
+}
+
+.calc-input-group {
+  display: grid;
+  gap: 10px;
+}
+
+.calc-input-group label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--brand-dark);
+}
+
+.calc-controls {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  gap: 14px;
+  align-items: center;
+}
+
+.calc-controls input[type="range"] {
+  width: 100%;
+  accent-color: var(--brand-accent);
+  cursor: pointer;
+}
+
+.calc-controls input[type="number"] {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--brand-dark);
+  background: var(--surface);
+  text-align: right;
+}
+
+.calc-results {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--brand-paper);
+  border-radius: 7px;
+  font-size: 0.95rem;
+}
+
+.calc-row strong {
+  white-space: nowrap;
+}
+
+.calc-deduction strong {
+  color: #b91c1c;
+}
+
+.calc-net {
+  background: var(--brand-dark);
+  color: #ffffff;
+  font-size: 1.08rem;
+  padding: 14px;
+}
+
+.calc-net strong {
+  font-size: 1.25rem;
+  color: #ffffff;
 }
 
 /* Reference Gallery */
@@ -753,7 +865,7 @@ a {
 
 /* Partners Strip */
 .partners-box {
-  margin-top: 52px;
+  margin-top: 48px;
   background: var(--brand-paper);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1026,15 +1138,26 @@ textarea::placeholder {
   color: #fca5a5;
 }
 
+/* Sticky Mobile Action Bar */
+.mobile-action-bar {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 1020px) {
   .hero-grid,
+  body[data-layout="showcase"] .hero-grid,
   .router-panel,
   .split-spread,
   .charcoal-top,
   .charcoal-columns,
+  .calc-card,
   .conversion-grid {
     grid-template-columns: 1fr;
+  }
+
+  body[data-layout="showcase"] .hero-media {
+    order: 0;
   }
 
   .gallery-grid {
@@ -1087,7 +1210,8 @@ textarea::placeholder {
 
   .gallery-grid,
   .direct-box,
-  .field-pair {
+  .field-pair,
+  .calc-controls {
     grid-template-columns: 1fr;
   }
 
@@ -1111,8 +1235,44 @@ textarea::placeholder {
 
   .partners-box,
   .quote-builder,
-  .router-panel {
+  .router-panel,
+  .calc-card {
     padding: 22px;
+  }
+
+  .site-footer {
+    padding-bottom: 92px;
+  }
+
+  .mobile-action-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 95;
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(110%);
+    transition: transform 0.25s var(--ease-out-expo), opacity 0.2s ease;
+  }
+
+  .mobile-action-bar.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mobile-action-bar .btn {
+    padding: 12px 10px;
+    font-size: 0.9rem;
   }
 }
 

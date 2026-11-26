@@ -1,5 +1,5 @@
 /**
- * Konfigurationsdata för TD Bygg & VS (tdbv.se).
+ * Konfigurationsdata för TD Bygg & VS (tdbv.se) — även utformad som komplett mall.
  */
 window.SITE_DATA = {
   company: {
@@ -10,6 +10,18 @@ window.SITE_DATA = {
     phoneDisplay: "0730-982 983",
     phoneHref: "tel:+46730982983",
     city: "661 32 Säffle"
+  },
+  // Sätt in kundens gratis Web3Forms-nyckel vid köp för direktutskick utan e-postklient:
+  formConfig: {
+    web3formsAccessKey: ""
+  },
+  // Interaktiv skattereduktions-kalkylator (ROT = 0.30, RUT = 0.50, active = false för att dölja)
+  calculator: {
+    active: true,
+    type: "ROT",
+    rate: 0.30,
+    maxPerPerson: 50000,
+    defaultLaborCost: 40000
   },
   serviceTabs: {
     nybygge: {
@@ -68,7 +80,7 @@ window.SITE_DATA = {
       label: "Referensobjekt",
       title: "Företaget startade 2009 och har gott om referensobjekt",
       badge: "Säffle med omnejd",
-      desc: "Vi låter våra färdiga jobb tala för sig själva. Nedan på sidan ser du ett axplock av våra tidigare projekt – och vill ni ha fler referenser innan ni bestämmer er så ordnar vi det självklart.",
+      desc: "Vi låter våra färdiga jobb tala för sig själva. Här på sidan ser du ett axplock av våra tidigare projekt – och vill ni ha fler referenser innan ni bestämmer er så ordnar vi det självklart.",
       bullets: [
         "Över 15 års erfarenhet i Säffle med omnejd (sedan 2009)",
         "Referensbilder från takstolsresning, takläggning, altan & fasad",

@@ -32,7 +32,8 @@
   }
   </script>
 </head>
-<body>
+<!-- Layout-växling i mallen: byt mellan "showcase" och "split" -->
+<body data-layout="showcase">
   <a class="skip-link" href="#main">Hoppa till innehållet</a>
 
   <!-- Top Utility Bar -->
@@ -65,10 +66,10 @@
 
       <nav class="main-nav" id="mainNav" aria-label="Huvudmeny">
         <a href="#tjanstevaljare">Tjänster</a>
-        <a href="#bygg-tak">Nybygge &amp; Tak</a>
-        <a href="#bkr-vvs">Badrum &amp; VVS</a>
         <a href="#referensobjekt">Referensobjekt</a>
-        <a href="#offert" class="nav-cta">Kontakta oss</a>
+        <a href="#bkr-vvs">Badrum &amp; VVS</a>
+        <a href="#rot-kalkylator">ROT-kalkylator</a>
+        <a href="#offert" class="nav-cta">Begär offert</a>
       </nav>
 
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="mainNav">
@@ -79,7 +80,7 @@
   </header>
 
   <main id="main">
-    <!-- Hero (First Viewport Thesis) -->
+    <!-- Hero (Showcase variant: full-width atmospheric framing + instant proof strip) -->
     <section class="hero" id="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -96,6 +97,7 @@
           </div>
           <div class="hero-quick-meta">
             <span>Behörig Våtrum (BKR)</span>
+            <span>30 % ROT direkt på fakturan</span>
             <span>E-post: <a href="mailto:info@tdbv.se">info@tdbv.se</a></span>
           </div>
         </div>
@@ -113,6 +115,39 @@
             <span>TD Bygg &amp; VS · Startade 2009</span>
           </figcaption>
         </figure>
+      </div>
+    </section>
+
+    <!-- Showcase Layout Highlight Strip (Project Gallery early above fold on scroll) -->
+    <section class="section showcase-gallery-band" id="referensobjekt">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Foton från tidigare projekt i Säffle med omnejd</h2>
+          <p>Vi har gott om referensobjekt sedan 2009. Här ser du ett axplock av våra egna arbeten – vill ni ha fler referenser så fixar vi det självklart.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item gallery-wide">
+            <img src="assets/projects/takstol.jpg" alt="Kranlyft av takstol på trästomme i Säffle" loading="lazy">
+            <figcaption>Resning av takstolar med kran vid nybyggnation.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/projects/taklagning.jpg" alt="Råspontläggning av två snickare på ställning" loading="lazy">
+            <figcaption>Läggning av råspont och underlagstak.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/projects/fasad.jpg" alt="Nymålad vit träfasad på villagavel" loading="lazy">
+            <figcaption>Fasadrenovering och målning med byggställning.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/projects/staket.jpg" alt="Platsbyggt staket och odlingslåda i trädgård" loading="lazy">
+            <figcaption>Trädgårdsstaket med nät och platsbyggd odlingslåda.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/projects/altan.jpg" alt="Stort trädäck med pergola och vedeldad badtunna" loading="lazy">
+            <figcaption>Nybyggt trädäck i flera steg, pergola &amp; badtunna.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -150,28 +185,16 @@
     <!-- Spread 1: Nybygge, Tak & Renovering -->
     <section class="section" id="bygg-tak">
       <div class="container split-spread">
-        <div class="real-project-stack">
-          <figure class="spread-media">
-            <img
-              src="assets/projects/takstol.jpg"
-              alt="Lyft av komplett takstol med kranbil på byggarbetsplats i Säffle"
-              width="1200"
-              height="900"
-              loading="lazy"
-            >
-            <figcaption>Stomresning och lyft av takstol vid nybyggnation.</figcaption>
-          </figure>
-          <figure class="spread-media">
-            <img
-              src="assets/projects/taklagning.jpg"
-              alt="Snickare som lägger råspont och takbeklädnad på nytt trähus"
-              width="1200"
-              height="900"
-              loading="lazy"
-            >
-            <figcaption>Takläggning och råspont – eget utförande från stomme till tätt tak.</figcaption>
-          </figure>
-        </div>
+        <figure class="spread-media">
+          <img
+            src="assets/projects/fasad.jpg"
+            alt="Nymålad vit träfasad och byggställning vid renovering i Säffle"
+            width="1200"
+            height="900"
+            loading="lazy"
+          >
+          <figcaption>Helhetsansvar från stomme och takläggning till nymålad fasad.</figcaption>
+        </figure>
 
         <div class="spread-content">
           <h2>Nybygge, renovering, tak, kök &amp; tillbyggen</h2>
@@ -252,35 +275,41 @@
       </div>
     </section>
 
-    <!-- Spread 3: Referensobjekt & Samarbetspartners -->
-    <section class="section" id="referensobjekt">
+    <!-- Interactive ROT Calculator + Partners -->
+    <section class="section" id="rot-kalkylator">
       <div class="container">
-        <div class="section-intro">
-          <h2>Foton från tidigare projekt i Säffle med omnejd</h2>
-          <p>Här visar vi ett axplock av våra verkliga referensobjekt. Vill ni ha fler referenser innan ni bestämmer er så fixar vi det självklart!</p>
-        </div>
+        <div class="calc-card" id="calcSection">
+          <div class="calc-copy">
+            <h2>Räkna ut ditt ROT-avdrag direkt</h2>
+            <p>
+              Som privatperson får du 30 % skattereduktion på arbetskostnaden (upp till 50 000 kr per person och år). Dra i reglaget för att se hur mycket du sparar innan du begär offert.
+            </p>
+            <div class="calc-input-group">
+              <label for="calcSlider">Uppskattad arbetskostnad (kr):</label>
+              <div class="calc-controls">
+                <input type="range" id="calcSlider" min="5000" max="200000" step="1000" value="40000">
+                <input type="number" id="calcNumber" min="1000" max="500000" step="500" value="40000" aria-label="Arbetskostnad i kronor">
+              </div>
+            </div>
+          </div>
 
-        <div class="gallery-grid">
-          <figure class="gallery-item gallery-wide">
-            <img src="assets/projects/altan.jpg" alt="Stort trädäck med pergola och vedeldad badtunna" loading="lazy">
-            <figcaption>Nybyggt trädäck i flera steg, pergola med tak och infälld badtunna.</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="assets/projects/takstol.jpg" alt="Kranlyft av takstol på trästomme" loading="lazy">
-            <figcaption>Resning av takstolar med kran vid nybyggnation.</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="assets/projects/taklagning.jpg" alt="Råspontläggning av två snickare på ställning" loading="lazy">
-            <figcaption>Läggning av råspont och underlagstak.</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="assets/projects/fasad.jpg" alt="Nymålad vit träfasad på villagavel" loading="lazy">
-            <figcaption>Fasadrenovering och målning med byggställning.</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="assets/projects/staket.jpg" alt="Platsbyggt staket och odlingslåda i trädgård" loading="lazy">
-            <figcaption>Trädgårdsstaket med nät och platsbyggd odlingslåda.</figcaption>
-          </figure>
+          <div class="calc-results" aria-live="polite">
+            <div class="calc-row">
+              <span>Arbetskostnad totalt</span>
+              <strong id="calcGross">40 000 kr</strong>
+            </div>
+            <div class="calc-row calc-deduction">
+              <span>ROT-avdrag (30 %)</span>
+              <strong id="calcSave">-12 000 kr</strong>
+            </div>
+            <div class="calc-row calc-net">
+              <span>Att betala för arbetet</span>
+              <strong id="calcNet">28 000 kr</strong>
+            </div>
+            <button type="button" class="btn btn-red btn-full" id="calcApplyBtn">
+              Ta med beräkning till offertförfrågan
+            </button>
+          </div>
         </div>
 
         <!-- Real Partners -->
@@ -400,7 +429,7 @@
           <p class="form-feedback form-success" id="formSuccess" role="status" hidden></p>
 
           <div class="qb-actions">
-            <button type="submit" class="btn btn-red btn-full">Skicka in via e-post (info@tdbv.se)</button>
+            <button type="submit" class="btn btn-red btn-full" id="submitBtn">Skicka in förfrågan (info@tdbv.se)</button>
             <button type="button" class="btn btn-outline-dark btn-full" id="copyQuoteBtn">Kopiera färdig förfrågan (för webbmejl / SMS)</button>
           </div>
         </form>
@@ -420,6 +449,15 @@
       </div>
     </div>
   </footer>
+
+  <!-- Sticky Mobile Quick-Action Bar (only visible on phones <= 760px) -->
+  <div class="mobile-action-bar" role="region" aria-label="Snabbkontakt">
+    <a href="tel:+46730982983" class="btn btn-red">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Ring 0730-982 983
+    </a>
+    <a href="#offert" class="btn btn-charcoal">Begär offert</a>
+  </div>
 
   <script src="site-data.js"></script>
   <script src="script.js"></script>
